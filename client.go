@@ -27,7 +27,7 @@ func NewSIBClient(apiKey string) *SIBClient {
 }
 
 func (c *SIBClient) sendRequest(path string, body []byte) (*protocol.Response, error) {
-	fmt.Println(string(body))
+	//	fmt.Println(string(body))
 	req, err := http.NewRequest("POST", apiEndPoint+path, bytes.NewBuffer(body))
 	if err != nil {
 		return nil, fmt.Errorf("%s error while making http request: %s", clientfilePath, err)
@@ -44,7 +44,7 @@ func (c *SIBClient) sendRequest(path string, body []byte) (*protocol.Response, e
 		return nil, fmt.Errorf("%s error while sending http request: %s", clientfilePath, err)
 	}
 
-	fmt.Println(string(respBody))
+	//	fmt.Println(string(respBody))
 	var response *protocol.Response
 
 	if err := json.Unmarshal(respBody, &response); err != nil {
